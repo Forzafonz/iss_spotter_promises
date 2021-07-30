@@ -12,18 +12,21 @@ const printResults = function(data) {
 const IP = fetchMyIP();
 
 IP
-.then((result) => {
-  let ip = JSON.parse(result).ip;
-  return ip;
-})
-.then(fetchCoordsByIP)
-.then((body) => {
-  let {latitude, longitude} = JSON.parse(body)
-  return {latitude, longitude}
-})
-.then(fetchISSFlyOverTimes)
-.then((body) => {
-  let data = JSON.parse(body).response;
-  return (data)
-})
-.then(printResults)
+  .then((result) => {
+    let ip = JSON.parse(result).ip;
+    return ip;
+  })
+  .then(fetchCoordsByIP)
+  .then((body) => {
+    let {latitude, longitude} = JSON.parse(body);
+    return {latitude, longitude};
+  })
+  .then(fetchISSFlyOverTimes)
+  .then((body) => {
+    let data = JSON.parse(body).response;
+    return (data);
+  })
+  .then(printResults)
+  .catch((error) => {
+    console.log("The program terminated with the following error:", error);
+  });
