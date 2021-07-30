@@ -28,5 +28,5 @@ IP
   })
   .then(printResults)
   .catch((error) => {
-    console.log("The program terminated with the following error:", error);
+    console.log("The program terminated with the following error:", error.message);
   });
